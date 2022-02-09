@@ -1,0 +1,10 @@
+name = "KernelMatrixBenchmarks"
+uuid = "23450d7c-7998-4e7a-b6d6-6db7fe3b0e4d"
+authors = ["Luiz M. Faria <maltezfaria@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+HMatrices = "8646bddf-ab1c-4fa7-9c51-ba187d647618"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+LoopVectorization = "bdcacae8-1622-11e9-2a5c-532679323890"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
