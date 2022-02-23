@@ -1,3 +1,5 @@
+const SUPPORTED_KERNELS = ["inverse-distance"]
+
 """
     struct InverseDistanceKernel{T,Td} <: AbstractKernelMatrix{T}
 
@@ -5,8 +7,8 @@ Lazy representation of a matrix `A` giving the inverse of the distance between
 point clouds `X` and `Y`.
 """
 struct InverseDistanceKernel{T,Td} <: AbstractKernelMatrix{T}
-    X::Matrix{Td}
-    Y::Matrix{Td}
+    X::Matrix{Td} # n × 3
+    Y::Matrix{Td} # m × 3
     function InverseDistanceKernel{T}(X::Matrix{Td}, Y::Matrix{Td}) where {T,Td}
         @assert size(X, 2) == size(Y, 2) == 3
         new{T,Td}(X, Y)
@@ -30,7 +32,7 @@ function Base.getindex(K::InverseDistanceKernel{T}, i::Int, j::Int)::T where {T}
     return (d2!=0)*inv(sqrt(d2))
 end
 function Base.getindex(K::InverseDistanceKernel, I::UnitRange, J::UnitRange)
-    T  = eltype(K)
+    T = eltype(K)
     m  = length(I)
     n  = length(J)
     Xv = view(K.X, I, :)
