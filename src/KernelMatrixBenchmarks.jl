@@ -4,7 +4,7 @@ using HMatrices
 using StaticArrays
 using LinearAlgebra
 using LoopVectorization
-using PythonCall
+# using PythonCall
 
 include("kernels.jl")
 include("assemble.jl")
